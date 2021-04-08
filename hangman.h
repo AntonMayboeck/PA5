@@ -4,16 +4,14 @@ using namespace std;
 
 class Hangman {
 public:
-    Hangman(int LENOFWORD, int LENOFFILE, string display, string guesses);
+    Hangman(char display, char guess);
     Hangman();
 	void MakeDisplay();
     void GetLetter(char);
 	int Play();
 
-    int LENOFWORD;
-    int LENOFFILE;
     string display;
-    string guesses;
+    char guess;
     char random_word[30];
     char master_list[100][30];
     char the_string[30];
