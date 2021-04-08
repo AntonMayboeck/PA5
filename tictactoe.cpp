@@ -2,15 +2,17 @@
 #include <algorithm>
 #include <iostream>
 #include <chrono>
+#include <set>
 #include "tictactoe.h"
 
 
 using namespace std;
 
-TicTacToe::TicTacToe(vector<char> matrix, char player, int tries){
+TicTacToe::TicTacToe(vector<char> matrix, char player, int tries, int choice){
 	this->matrix = matrix;
 	this->player = player;
 	this->number = number;
+	this->choice = choice;
 }
 
 TicTacToe::TicTacToe(){}
@@ -33,15 +35,23 @@ void TicTacToe::Draw() {
 	}
 }
 
-void TicTacToe::Input(char choice)
+void TicTacToe::Input(int choice)
 {
 	int a;
+	int b;
+	vector<int> randNumbers;
 	cout << "It's " << player << " turn. " << "Press the number of the field: ";
 	cin >> a;
-	if (choice == '1') {
+	if (choice == 1 && player == 'O') {
 		a = rand() % 9;
+		for (int i = 0; i < randNumbers.size(); i++) {
+			if (randNumbers.at(i) == a) {
+				a = rand() % 9;
+				randNumbers.insert(randNumbers.begin(), a);
+			}
+		}
 	}
-
+		 
 	if (a == 1)
 	{
 		if (matrix.at(0) == '1')
@@ -49,7 +59,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 2)
@@ -59,7 +69,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 3)
@@ -69,7 +79,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 4)
@@ -79,7 +89,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 5)
@@ -89,7 +99,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 6)
@@ -99,7 +109,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 7)
@@ -109,7 +119,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 8)
@@ -119,7 +129,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 	else if (a == 9)
@@ -129,7 +139,7 @@ void TicTacToe::Input(char choice)
 		else
 		{
 			cout << "Field is already in use try again!" << endl;
-			Input();
+			Input(choice);
 		}
 	}
 
@@ -218,43 +228,73 @@ char TicTacToe::Win() {
 	return '/';
 }
 
+int TicTacToe::calculateScore() {
+}
+
 int TicTacToe::Play() {
 	TicTacToe TicTac;
 
-	srand(std::chrono::milliseconds());
+	srand(time(0));
 
 	TicTac.matrix = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 	TicTac.number = 0;
-	char choice;
-
-	TicTac.player = 'X';
+	
+	char Playerchoice;
+	char playAgain;
+	player = 'X';
 
 	cout << "One player(1)" << endl;
 	cout << "Two player(2)" << endl;
-
-	cin >> choice;
+	cout << "How many players: ";
+	cin >> Playerchoice;
+	TicTac.choice = (int)Playerchoice;
 
 	//TicTac.Init();
 	TicTac.Draw();
-	while (true)
+	while (playAgain != 'q')
 	{
 		TicTac.number++;
-		TicTac.Input(choice);
+		TicTac.Input(PlayerChoice);
 		TicTac.Draw();
-		if (TicTac.Win() == 'X')
+		if (TicTac.Win() == 'X')	
 		{
 			cout << "X wins!" << endl;
-			break;
+			cout << "(q)uit: ";
+			cin >> playAgain;
+			if (playAgain != 'q') {
+				TicTac.calculateScore();;
+				TicTac.Play();
+			}
+			else
+			{
+				break;
+			}
 		}
 		else if (TicTac.Win() == 'O')
 		{
 			cout << "O wins!" << endl;
-			break;
+			cout << "(q)uit: ";
+			cin >> playAgain;
+			if (playAgain != 'q') {
+				TicTac.Play();
+			}
+			else
+			{
+				break;
+			}
 		}
 		else if (TicTac.Win() == '/' && TicTac.number == 9)
 		{
 			cout << "It's a draw!" << endl;
-			break;
+			cout << "(q)uit: ";
+			cin >> playAgain;
+			if (playAgain != 'q') {
+				TicTac.Play();
+			}
+			else
+			{
+				break;
+			}
 		}
 		TicTac.TogglePlayer();
 	}
