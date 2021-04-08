@@ -11,6 +11,7 @@ int LENOFWORD = 20;
 int LENOFFILE = 100;
 string alphabet="a b c d e f g h i j k l m n o p q r s t u v w x y z";
 string display;
+string guesses;
 
 //makes the dashes for the display
 void makeDisplay(char *word) {
@@ -19,10 +20,13 @@ void makeDisplay(char *word) {
         display = display + "_ ";
 }
 
-void getLetter(char *word, char guess) {
+int getLetter(char *word, char guess) {
     int len = strlen(word);
     for (int i = 0; i < len; i++)
     {
+        if (guess == word[i]) {
+            
+        }
     }
 }
 
@@ -53,5 +57,7 @@ int main() {
 
     cout << master_list[random] << endl;
     makeDisplay(master_list[random]);
+
+    cout << "Let's play a game of hangman!!!!!" << endl;
     cout << display << endl;
 }
