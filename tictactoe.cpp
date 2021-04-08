@@ -40,8 +40,14 @@ void TicTacToe::Input(int choice)
 	int a;
 	int b;
 	vector<int> randNumbers;
-	cout << "It's " << player << " turn. " << "Press the number of the field: ";
-	cin >> a;
+	if (player == 'O') {
+		cout << "It's " << player << " turn. " << endl;
+	}
+	else {
+		cout << "It's " << player << " turn. " << "Press the number of the field: ";
+		cin >> a;
+	}
+	
 	if (choice == 1 && player == 'O') {
 		a = rand() % 9;
 		for (int i = 0; i < randNumbers.size(); i++) {
@@ -229,6 +235,13 @@ char TicTacToe::Win() {
 }
 
 int TicTacToe::calculateScore() {
+
+	if (number == 5) {
+		return 1000 + (number * 105);
+	}
+	else {
+		return 1000 - ((9 - number) * 100) + (number * 105);
+	}
 }
 
 int TicTacToe::Play() {
@@ -241,7 +254,8 @@ int TicTacToe::Play() {
 	
 	char Playerchoice;
 	char playAgain;
-	player = 'X';
+	int score;
+	TicTac.player = 'X';
 
 	cout << "One player(1)" << endl;
 	cout << "Two player(2)" << endl;
@@ -254,7 +268,7 @@ int TicTacToe::Play() {
 	while (playAgain != 'q')
 	{
 		TicTac.number++;
-		TicTac.Input(PlayerChoice);
+		TicTac.Input(Playerchoice);
 		TicTac.Draw();
 		if (TicTac.Win() == 'X')	
 		{
@@ -262,7 +276,8 @@ int TicTacToe::Play() {
 			cout << "(q)uit: ";
 			cin >> playAgain;
 			if (playAgain != 'q') {
-				TicTac.calculateScore();;
+				score = TicTac.calculateScore();
+				// insert into the highscore class
 				TicTac.Play();
 			}
 			else
@@ -298,7 +313,7 @@ int TicTacToe::Play() {
 		}
 		TicTac.TogglePlayer();
 	}
-	system("pause");
+	//system("pause");
 	return 0;
 }
 int main(){
