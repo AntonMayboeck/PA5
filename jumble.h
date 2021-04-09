@@ -8,19 +8,20 @@ public:
     double points;
     int iteration_counter;
     char* pnr;
-    char* word; // pointer to input word
-    char* word2;
+    char word; // pointer to input word
     int lenOfRandom;
     bool checker;
     int overall_hint_counter;
     int hint_counter;
     int hintsleft;
+    int tries;
     // methods
     int Play();
+    void checkLetter();
     void create_dash(int);
     void initialize();
     void randomize(char*);
-    bool cmp(char*, char*);
+    bool cmp();
     void hint();
     void get_random_word();
     void guess_word();

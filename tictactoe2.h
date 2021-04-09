@@ -37,7 +37,7 @@ public:
 		cout << "			 ___ ___ ___" << endl << endl;
 	}
 
-	void setboardwithchoice(int c) //this function takes the choice and matches it to the proper board box
+	void boardchoice(int c) //this function takes the choice and matches it to the proper board box
 	{
 		switch (c)
 		{
@@ -96,14 +96,14 @@ public:
 			{
 				cout << p1 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				setboardwithchoice(boxchoice);
+				boardchoice(boxchoice);
 				totalmovecounter++;
 			}
 			else
 			{
 				cout << p2 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				setboardwithchoice(boxchoice);
+				boardchoice(boxchoice);
 				totalmovecounter++;
 			}
 			hcheckforwin();
@@ -115,15 +115,61 @@ public:
 
 	void hcheckforwin() //checks for wins then provides a menu
 	{
-		if (((array[0] == 'X') && (array[1] == 'X') && (array[2] == 'X')) || ((array[3] == 'X') && (array[4] == 'X') && (array[5] == 'X')) || ((array[6] == 'X') && (array[7] == 'X') && (array[8] == 'X'))) { displayboard(); istherewinner = true; cout << p1 << " is the WINNER with a horizontal win!\n\n"; ++p1score; displayscore(); hmenu(); }
-		else if (((array[0] == 'O') && (array[1] == 'O') && (array[2] == 'O')) || ((array[3] == 'O') && (array[4] == 'O') && (array[5] == 'O')) || ((array[6] == 'O') && (array[7] == 'O') && (array[8] == 'O'))) { displayboard(); istherewinner = true; cout << p2 << " is the WINNER with a horizontal win!\n\n"; ++p2score; displayscore(); hmenu(); }
-		else if (((array[0] == 'X') && (array[3] == 'X') && (array[6] == 'X')) || ((array[1] == 'X') && (array[4] == 'X') && (array[7] == 'X')) || ((array[2] == 'X') && (array[5] == 'X') && (array[8] == 'X'))) { displayboard(); istherewinner = true; cout << p1 << " is the WINNER with a vertical win!\n\n"; ++p1score; displayscore(); hmenu(); }
-		else if (((array[0] == 'O') && (array[3] == 'O') && (array[6] == 'O')) || ((array[1] == 'O') && (array[4] == 'O') && (array[7] == 'O')) || ((array[2] == 'O') && (array[5] == 'O') && (array[8] == 'O'))) { displayboard(); istherewinner = true; cout << p2 << " is the WINNER with a vertical win!\n\n"; ++p2score; displayscore(); hmenu(); }
-		else if (((array[0] == 'X') && (array[4] == 'X') && (array[8] == 'X')) || ((array[2] == 'X') && (array[4] == 'X') && (array[6] == 'X'))) { displayboard(); istherewinner = true; cout << p1 << " is the WINNER with a diagonal win!\n\n"; ++p1score; displayscore(); hmenu(); }
-		else if (((array[0] == 'O') && (array[4] == 'O') && (array[8] == 'O')) || ((array[2] == 'O') && (array[4] == 'O') && (array[6] == 'O'))) { displayboard(); istherewinner = true; cout << p2 << " is the WINNER with a diagonal win!\n\n"; ++p2score; displayscore(); hmenu(); }
+		if (((array[0] == 'X') && (array[1] == 'X') && (array[2] == 'X')) || ((array[3] == 'X') && (array[4] == 'X') && (array[5] == 'X')) || ((array[6] == 'X') && (array[7] == 'X') && (array[8] == 'X'))) { 
+			displayboard(); 
+			istherewinner = true;
+			cout << p1 << " is the WINNER with a horizontal win!\n\n"; 
+			++p1score; displayscore(); 
+			humanmenu();
+		}
+		else if (((array[0] == 'O') && (array[1] == 'O') && (array[2] == 'O')) || ((array[3] == 'O') && (array[4] == 'O') && (array[5] == 'O')) || ((array[6] == 'O') && (array[7] == 'O') && (array[8] == 'O'))) { 
+			displayboard(); 
+			istherewinner = true; 
+			cout << p2 << " is the WINNER with a horizontal win!\n\n";
+			++p2score; 
+			displayscore();
+			humanmenu();
+		}
+		else if (((array[0] == 'X') && (array[3] == 'X') && (array[6] == 'X')) || ((array[1] == 'X') && (array[4] == 'X') && (array[7] == 'X')) || ((array[2] == 'X') && (array[5] == 'X') && (array[8] == 'X'))) { 
+			displayboard(); 
+			istherewinner = true;
+			cout << p1 << " is the WINNER with a vertical win!\n\n";
+			++p1score; 
+			displayscore();
+			humanmenu(); 
+		}
+		else if (((array[0] == 'O') && (array[3] == 'O') && (array[6] == 'O')) || ((array[1] == 'O') && (array[4] == 'O') && (array[7] == 'O')) || ((array[2] == 'O') && (array[5] == 'O') && (array[8] == 'O'))) { 
+			displayboard();
+			istherewinner = true; 
+			cout << p2 << " is the WINNER with a vertical win!\n\n";
+			++p2score;
+			displayscore(); 
+			humanmenu(); 
+		}
+		else if (((array[0] == 'X') && (array[4] == 'X') && (array[8] == 'X')) || ((array[2] == 'X') && (array[4] == 'X') && (array[6] == 'X'))) {
+			displayboard();
+			istherewinner = true; 
+			cout << p1 << " is the WINNER with a diagonal win!\n\n"; 
+			++p1score; 
+			displayscore();
+			humanmenu(); 
+		}
+		else if (((array[0] == 'O') && (array[4] == 'O') && (array[8] == 'O')) || ((array[2] == 'O') && (array[4] == 'O') && (array[6] == 'O'))) { 
+			displayboard();
+			istherewinner = true; 
+			cout << p2 << " is the WINNER with a diagonal win!\n\n";
+			++p2score;
+			displayscore();
+			humanmenu();
+		}
 
 		else if (totalmovecounter == 9) {
-			displayboard(); istherewinner = true; cout << "THERE IS NO WINNER! IT IS A DRAW\n\n"; ++drawscore; displayscore(); hmenu();
+			displayboard(); 
+			istherewinner = true; 
+			cout << "THERE IS NO WINNER! IT IS A DRAW\n\n";
+			++drawscore; 
+			displayscore(); 
+			humanmenu();
 		}
 	}
 
@@ -138,7 +184,7 @@ public:
 				displayboard();
 				cout << p2 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				setboardwithchoice(boxchoice);
+				boardchoice(boxchoice);
 				totalmovecounter++;
 				hcheckforwin();
 				++turn;
@@ -148,7 +194,7 @@ public:
 				displayboard();
 				cout << p1 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				setboardwithchoice(boxchoice);
+				boardchoice(boxchoice);
 				totalmovecounter++;
 				hcheckforwin();
 				++turn;
@@ -163,93 +209,182 @@ public:
 
 	void compstrategy()
 	{
-		if (p1 == "COMP" && compmove == 0) { setboardwithchoice(5); compmove++; }
+		if (p1 == "COMP" && compmove == 0) { 
+			boardchoice(5);
+			compmove++;
+		}
 
 		else if (p1 == "COMP" && compmove == 1)
 		{
-			if (array[2] == '3') { setboardwithchoice(3); compmove++; }
-			else if (array[8] == '9') { setboardwithchoice(9); compmove++; }
+			if (array[2] == '3') { 
+				boardchoice(3);
+				compmove++; 
+			}
+			else if (array[8] == '9') {
+				boardchoice(9);
+				compmove++;
+			}
 		}
 
 		else if (p1 == "COMP" && compmove == 2)
 		{
 			if (array[2] == 'X') {
-				if (array[6] == '7') { setboardwithchoice(7); compmove++; }
-				else if (array[8] == '9') { setboardwithchoice(9); compmove++; }
-				else if (array[0] == '1') { setboardwithchoice(1); compmove++; }
+				if (array[6] == '7') {
+					boardchoice(7);
+					compmove++; 
+				}
+				else if (array[8] == '9') {
+					boardchoice(9);
+					compmove++;
+				}
+				else if (array[0] == '1') {
+					boardchoice(1);
+					compmove++; 
+				}
 			}
 			if (array[8] == 'X') {
-				if (array[0] == '1') { setboardwithchoice(1); compmove++; }
-				else if (array[6] == '7') { setboardwithchoice(7); compmove++; }
+				if (array[0] == '1') { 
+					boardchoice(1);
+					compmove++; 
+				}
+				else if (array[6] == '7') { 
+					boardchoice(7);
+					compmove++;
+				}
 			}
 		}
 
 		else if (p1 == "COMP" && compmove == 3)
 		{
 			if (array[2] == 'X') {
-				if (array[5] == '6') { setboardwithchoice(6); compmove++; }
-				else if (array[0] == '1') { setboardwithchoice(1); compmove++; }
+				if (array[5] == '6') { 
+					boardchoice(6);
+					compmove++;
+				}
+				else if (array[0] == '1') { 
+					boardchoice(1);
+					compmove++; 
+				}
 			}
 			if (array[8] == 'X') {
-				if (array[7] == '8') { setboardwithchoice(8); compmove++; }
-				else if (array[2] == '3') { setboardwithchoice(3); compmove++; }
+				if (array[7] == '8') { 
+					boardchoice(8);
+					compmove++;
+				}
+				else if (array[2] == '3') {
+					boardchoice(3);
+					compmove++; 
+				}
 			}
 		}
 
 		else if (p2 == "COMP" && compmove == 0)
 		{
-			if (array[4] == '5') { setboardwithchoice(5); compmove++; }
-			else if (array[2] == '3') { setboardwithchoice(3); compmove++; }
+			if (array[4] == '5') { 
+				boardchoice(5);
+				compmove++; 
+			}
+			else if (array[2] == '3') { 
+				boardchoice(3);
+				compmove++;
+			}
 		}
 
 
 		else if (p2 == "COMP" && compmove == 1)
 		{
-			if (array[2] == '3') { setboardwithchoice(3); compmove++; }
-			else if (array[8] == '9') { setboardwithchoice(9); compmove++; }
+			if (array[2] == '3') { 
+				boardchoice(3);
+				compmove++;
+			}
+			else if (array[8] == '9') {
+				boardchoice(9);
+				compmove++;
+			}
 		}
 
 		else if (p2 == "COMP" && compmove == 2)
 		{
 			if (array[2] == 'O') {
-				if (array[6] == '7') { setboardwithchoice(7); compmove++; }
-				else if (array[8] == '9') { setboardwithchoice(9); compmove++; }
-				else if (array[0] == '1') { setboardwithchoice(1); compmove++; }
+				if (array[6] == '7') {
+					boardchoice(7);
+					compmove++; }
+				else if (array[8] == '9') { 
+					boardchoice(9);
+					compmove++; 
+				}
+				else if (array[0] == '1') {
+					boardchoice(1);
+					compmove++;
+				}
 
 			}
 			if (array[8] == 'O') {
-				if (array[6] == '7') { setboardwithchoice(7); compmove++; }
-				else if (array[0] == '1') { setboardwithchoice(1); compmove++; }
+				if (array[6] == '7') {
+					boardchoice(7);
+					compmove++;
+				}
+				else if (array[0] == '1') { 
+					boardchoice(1);
+					compmove++;
+				}
 			}
 		}
 		else if (p2 == "COMP" && compmove == 3)
 		{
 			if (array[2] == 'O') {
-				if (array[5] == '6') { setboardwithchoice(6); compmove++; }
-				else if (array[0] == '1') { setboardwithchoice(1); compmove++; }
+				if (array[5] == '6') { 
+					boardchoice(6);
+					compmove++; 
+				}
+				else if (array[0] == '1') { 
+					boardchoice(1);
+					compmove++; 
+				}
 			}
 			if (array[8] == 'O') {
-				if (array[0] == '1') { setboardwithchoice(1); compmove++; }
-				if (array[7] == '8') { setboardwithchoice(8); compmove++; }
-				else if (array[2] == '3') { setboardwithchoice(3); compmove++; }
+				if (array[0] == '1') { 
+					boardchoice(1);
+					compmove++; 
+				}
+				if (array[7] == '8') {
+					boardchoice(8);
+					compmove++; 
+				}
+				else if (array[2] == '3') { 
+					boardchoice(3);
+					compmove++; 
+				}
 			}
 		}
 		else if (p2 == "COMP" && compmove == 4)
 		{
 			if (array[2] == 'O') {
-				if (array[5] == '6') { setboardwithchoice(6); compmove++; }
-				else if (array[0] == '1') { setboardwithchoice(1); compmove++; }
+				if (array[5] == '6') { 
+					boardchoice(6);
+					compmove++; 
+				}
+				else if (array[0] == '1') { 
+					boardchoice(1);
+					compmove++; 
+				}
 			}
 			if (array[8] == 'O') {
-				if (array[7] == '8') { setboardwithchoice(8); compmove++; }
-				else if (array[2] == '3') { setboardwithchoice(3); compmove++; }
+				if (array[7] == '8') { 
+					boardchoice(8);
+					compmove++; 
+				}
+				else if (array[2] == '3') { 
+					boardchoice(3);
+					compmove++; 
+				}
 			}
 		}
 	}
 
 
 
-	void hmenu()
+	void humanmenu()
 	{
 		cout << "1.Play Again?\n2.Main Menu\n3.Quit\n";
 		cin >> menuchoice;
@@ -257,11 +392,17 @@ public:
 		{
 		case 1:
 			hresetboard();
-			if (p1 == "COMP" || p2 == "COMP") { crun(); }
-			else { hrungetmove(); }
+			if (p1 == "COMP" || p2 == "COMP") { 
+				crun(); 
+			}
+			else { 
+				hrungetmove();
+			}
 			break;
 
-		case 2:resetscores(); hresetboard(); Play(); break;
+		case 2:resetscores(); hresetboard(); 
+			Play(); 
+			break;
 
 		case 3: exit(0);
 		}
@@ -299,7 +440,9 @@ public:
 
 		case 3:
 			cout << "TAKE TURNS, GET 3 OF YOUR SYMBOLS IN A ROW AND YOU WIN! SIMPLE!\n";
-			system("pause"); Play(); break;
+			system("pause"); 
+			Play(); 
+			break;
 
 		case 4: exit(0);
 		}
@@ -323,8 +466,4 @@ public:
 		istherewinner = false;
 		compmove = 0;
 	}
-
-
-
-
 };
