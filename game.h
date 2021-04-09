@@ -6,13 +6,14 @@ using namespace std;
 
 class Game {
     public:
-        Game(TicTacToe *tictactoe, Snake *snake);
+        Game(int score, Snake *snake);
         Game();
         void mainScreen();
         void Header();
         void firstScreen();
 
         Snake *snake;
+        int score;
+
         //Hangman hangman;
-        TicTacToe *tictactoe;
 };

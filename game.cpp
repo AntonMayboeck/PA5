@@ -4,12 +4,10 @@
 //#include "hangman.h"
 #include "game.h"
 
-Game::Game(TicTacToe *tictactoe, Snake *snake){
-    //this->hangman = hangman;
-    this->tictactoe = tictactoe;
+Game::Game(int score, Snake *snake){
+    this->score = score;
     this->snake = snake;
 }
-
 Game::Game(){}
 
 void Game::Header() {
@@ -49,15 +47,15 @@ void Game::mainScreen(){
     cin >> choice;
 
     if (choice == 1) {
-        TicTacToe t;
-        t.Play();
+        //TicTacToe t;
+        //t.Play();
     } 
     else if (choice == 2) {
         cout << "hang";
     }
     else if (choice == 3) {
-        Snake s;
-        s.Play();
+        snake->Play();
+        //s.Play();
     }
 
     return;
