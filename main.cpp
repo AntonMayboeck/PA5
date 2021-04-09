@@ -21,20 +21,29 @@ int main() {
 	TicTacToe TicTac;
 	Snake Snake;
 	Hangman Hang;
+	int TotalScore;
+	int tempScore;
 
 	char choice;
 
 	while (true) {
 		printPretty(choice);
 		if (choice == '1') {
-			Hang.Play();
+			tempScore = Hang.Play();
+			TotalScore += tempScore;
+			tempScore = 0;
 			//Play Hangman
 		}
 		if (choice == '2') {
-			TicTac.Play();
+			tempScore = TicTac.Play();
+			TotalScore += tempScore;
+			tempScore = 0;
+
 		}
 		if (choice == '3') {
-			Snake.Play();
+			tempScore = Snake.Play();
+			TotalScore += tempScore;
+			tempScore = 0;
 		}
 	}
 

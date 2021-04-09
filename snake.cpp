@@ -13,22 +13,37 @@
 
 using namespace std;
 
-Snake::Snake(int width, int height, bool gameOver, int FruitX, int FruitY, int x, int y, int score, eDirection dir){
+Snake::Snake(int width, int height, bool gameOver, int FruitX, int FruitY, int x, int y, int score, eDirection dir, int nTail, int TailX[100], int TailY[100]){
   this->width = width;
   this->height = height;
-  this->gameOver = gameOver;
+  this->gameOver = false;
   this->x = x;
   this->y = y;
   this->FruitX = FruitX;
   this->FruitY = FruitY;
   this->score = score;
   this->dir = dir;
+  this->nTail = nTail;
+  this->TailX[100] = TailX[100];
+  this->TailY[100] = TailY[100];
 }
 
 Snake::Snake(){}
 
 int Snake::Endscreen() {
-  return 0;
+  initscr();
+  clear();
+  for(int i = 0; i < 22; i++)
+        mvprintw(0,i,"+");
+
+    char choice;
+    cout << "\n\n\n\n\n\n" << endl;
+    cout << "hello?";
+    cin >> choice;
+    if (choice == 'y') {
+      return 0;
+    }
+    refresh();
 }
 
 void Snake::Setup(){
@@ -41,11 +56,15 @@ void Snake::Setup(){
     enum eDirection {STOP = 0, LEFT, RIGHT, UP, DOWN};
     eDirection dir;
     dir = STOP;
-    x = width / 2;
-    y = height / 2;
-    FruitX = (rand() % width)+1;
-    FruitY = (rand() % height)+1;
+    width = 20;
+    height = 20;
+    x = 20 / 2; // width / 2
+    y = 20 / 2; // width / 2
+    FruitX = (rand() % 20)+1;
+    FruitY = (rand() % 20)+1;
     score = 0;
+    nTail = 0;
+
 }
 void Snake::Input(){
     keypad(stdscr, true);
@@ -71,7 +90,7 @@ void Snake::Input(){
   }
 }
 void Snake::Logic(){
-      int prevX = TailX[0];
+  int prevX = TailX[0];
   int prevY = TailY[0];
   int prev2X, prev2Y;
   TailX[0] = x;
@@ -106,13 +125,13 @@ void Snake::Logic(){
       break;
   }
 
-  if(x > width || x < 1 || y < 1 || y > height)
+  if(x > 20 || x < 1 || y < 1 || y > 20)
     gameOver = true;
   if(x == FruitX && y == FruitY)
   {
-    score++;
-    FruitX = (rand() % width)+1;
-    FruitY = (rand() % height)+1;
+    score += 100;
+    FruitX = (rand() % 20)+1;
+    FruitY = (rand() % 20)+1;
     nTail++;
   }
 
@@ -125,12 +144,12 @@ void Snake::Logic(){
 
 void Snake::Draw(){
     clear();
-    for(int i = 0; i < width+2; i++)
+    for(int i = 0; i < 22; i++)
         mvprintw(0,i,"+");
 
-    for(int i = 0; i < height+2; i++)
+    for(int i = 0; i < 22; i++)
     {
-        for(int j = 0; j < width+2; j++)
+        for(int j = 0; j < 22; j++)
         {
             if (i == 0 || i == 21)
                 mvprintw(i, j, "+");
@@ -169,5 +188,5 @@ int Snake::Play(){
 
     getch();
     endwin();
-    return 0;
+    return score;
 }

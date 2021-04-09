@@ -15,7 +15,7 @@ enum eDirection
       DOWN
    };
 
-    Snake(int width, int height, bool gameOver, int FruitX, int FruitY, int x, int y, int score, eDirection dir);
+    Snake(int width, int height, bool gameOver, int FruitX, int FruitY, int x, int y, int score, eDirection dir, int nTail, int TailX[], int TailY[]);
     Snake();
 	void Setup();
     void Input();
