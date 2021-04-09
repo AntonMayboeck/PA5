@@ -1,2 +1,11 @@
-abated: 0
-aback: 8
+To Do
+
+- Read file
+	- Get scores
+	- Split the string
+	- Sort and delete when necessary
+	- Replace the new score with the new where necessary
+
+- Write into file
+
+- Finish Hangman

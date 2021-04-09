@@ -1,0 +1,4 @@
+Anton,12000
+Eva,10000
+Anton,9000
+Magga,7500

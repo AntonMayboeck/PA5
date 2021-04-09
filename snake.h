@@ -2,6 +2,8 @@
 
 using namespace std;
 
+#pragma once
+
 class Snake {
 public:
 enum eDirection
@@ -18,7 +20,9 @@ enum eDirection
 	void Setup();
     void Input();
 	void Logic();
+    void Draw();
     int Play();
+    int Endscreen();
 
     bool gameOver;
     int width;

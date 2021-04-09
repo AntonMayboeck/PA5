@@ -3,6 +3,8 @@
 #include <iostream>
 #include <chrono>
 #include <set>
+#include <cstdlib>
+#include <ncurses.h>
 #include "snake.h"
 #include <iostream> 
 #include <cstdlib>
@@ -25,7 +27,11 @@ Snake::Snake(int width, int height, bool gameOver, int FruitX, int FruitY, int x
 
 Snake::Snake(){}
 
-Snake::SetUp(){
+int Snake::Endscreen() {
+  return 0;
+}
+
+void Snake::Setup(){
     initscr();
     clear();
     noecho();
@@ -41,8 +47,8 @@ Snake::SetUp(){
     FruitY = (rand() % height)+1;
     score = 0;
 }
-Snake::Input(){
-  keypad(stdscr, true);
+void Snake::Input(){
+    keypad(stdscr, true);
   halfdelay(1);
   int c = getch();
   switch(c)
@@ -64,8 +70,8 @@ Snake::Input(){
       break;
   }
 }
-Snake::Logic(){
-  int prevX = TailX[0];
+void Snake::Logic(){
+      int prevX = TailX[0];
   int prevY = TailY[0];
   int prev2X, prev2Y;
   TailX[0] = x;
@@ -117,7 +123,7 @@ Snake::Logic(){
     }
 }
 
-Snake::Draw(){
+void Snake::Draw(){
     clear();
     for(int i = 0; i < width+2; i++)
         mvprintw(0,i,"+");
@@ -150,7 +156,7 @@ Snake::Draw(){
     refresh();
 }
 
-Snake::Play(){
+int Snake::Play(){
     Setup();
     Draw();
     
@@ -159,7 +165,7 @@ Snake::Play(){
         Input();
         Logic();
     }
-    endscreen();
+    Endscreen();
 
     getch();
     endwin();
