@@ -1,0 +1,11 @@
+default: compile clear run
+
+compile:
+	g++ -lncurses -o game.exe game.cpp tictactoe2.cpp jumble.cpp
+clear:
+	clear
+run:
+	./game.exe
+
+# g++ -lncurses -o game.exe game.cpp tictactoe2.cpp jumble.cpp
+# snake.cpp
