@@ -19,34 +19,68 @@ void WordJumble::set_iteration_counter(int i) {
 void WordJumble::initialize() {
     points = 10;
     pnr = new char[20];
-    word = new char[200]; // pointer to input word
+    word; // pointer to input word
     checker = false;
     overall_hint_counter = 0;
 }
 void WordJumble::set_random_word() {
-    //cout << "Line 1" << endl;
+    //cout << "Line 1 rna" << endl;
     hint_counter = 0;
     //cout << "Line 2" << endl;
     get_random_word();
     //cout << "Line 3" << endl;
+    //cout << lenOfRandom << endl;
     create_dash(lenOfRandom);
     //cout << "Line 4" << endl;
+}
+
+void WordJumble::checkLetter() {
+    for (int i = 0; i < lenOfRandom; i ++ ) {
+        if (word == random_word[i]) {
+            hint_array[i] = word;
+        }
+        
+    }
+    for (int i = 0; i < lenOfRandom; i++) {
+        cout << hint_array[i] << " ";
+    }
 }
 
 void WordJumble::guess_word() {
     char hint_checker;
     bool quit = false;
+    int index = 0;
+    int notimes;
+
+    tries = lenOfRandom;
 
     // returns when a person gets it or 
     while (quit == false) {
-        cout << "\n" << " The word you're trying to guess scrambled is: " << pnr << "\n\n" << endl;
-        cout << "Please enter a guess word: ";
-        cin >> word;
-        if (cmp(word, word2)) {
-            delete[] word2;
+        for (int i = 0; i < lenOfRandom; i++)
+        {
+            cout << hint_array[i] << " ";
+        }
+        //cout << "\n" << " The word you're trying to guess scrambled is: " << pnr << "\n\n" << endl;
+        cout << "Please enter a guess letter: ";
+        cin >> word;        
+        index++;
+        checkLetter();
+        for (int i = 0; i < lenOfRandom; i++) {
+            if (word == hint_array[i]) {
+                notimes++;
+            }
+        }
+        if (notimes == 0) {
+            tries--;
+        }
+        cout << "you have " << tries <<  " tries left" << endl;
+        if (tries == 0) {
+            cout << "You have failed to guess the word" << endl;
+            return;
+        }
+        if (cmp()) {
             delete[] pnr;
-            delete[] word;
-            //delete[] random_word;
+            delete[] random_word;
             cout << "Well Done, you have solved the crisis!!!!" << endl;
             quit = true;
         }
@@ -82,7 +116,7 @@ void WordJumble::get_random_word() {
     int counter = 0;
 
     // read the file
-    fin.open("100_words.fic", ios::binary | ios::in);
+    fin.open("words.fic", ios::binary | ios::in);
     //cout << "Line 3" << endl;
     while (!fin.eof()) {
         fin >> the_string;
@@ -102,9 +136,7 @@ void WordJumble::get_random_word() {
     lenOfRandom = strlen(pnr);
     randomize(pnr); // scrambling the random_word
     //cout << "Line 6" << endl;
-    word2 = new char[strlen(random_word)]; // not scrambled random_word
     //cout << "Line 7" << endl;
-    strcpy(word2, random_word);
     //cout << "Line 8" << endl;
 
 }
@@ -124,12 +156,9 @@ void WordJumble::swap(char* arr, int i, int j) {
     arr[j] = temp;
 }
 
-bool WordJumble::cmp(char* firt_string, char* second_string) {
-    if (strlen(word) != strlen(random_word)) {
-        return false;
-    }
-    for (int i = 0; i < strlen(word); i++) {
-        if (word[i] != random_word[i]) {
+bool WordJumble::cmp() {
+    for (int i = 0; i < lenOfRandom; i++) {
+        if (hint_array[i] == '_') {
             return false;
         }
     }
@@ -143,8 +172,10 @@ void WordJumble::hint() {
     if (hintsleft == 0) {
         cout << "No hints left!" << endl;
     }
-    if (hint_counter < 0) {
-        int random_num = (rand() % lenOfRandom);
+    else {
+        int random_num = (rand() % lenOfRandom); 
+        hintsleft--;
+        tries = tries - 2;
         while (hint_array[random_num] != '_') {
             // try again
             random_num = (rand() % lenOfRandom);
@@ -195,7 +226,7 @@ int WordJumble::Play() {
             break;
 
         }
-        cout << "Continue? (y) ";
+        cout << "Continue? (y/n) ";
         cin >> letter;
         cout << letter << endl;
         if (letter != 'y') {
