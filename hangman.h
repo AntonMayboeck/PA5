@@ -7,7 +7,7 @@ public:
     Hangman(char display, char guess);
     Hangman();
 	void MakeDisplay();
-    void GetLetter(char);
+    void GetLetter();
 	int Play();
 
     string display;

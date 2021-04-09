@@ -3,7 +3,7 @@
 #include "tictactoe.h"
 #include "snake.h"
 #include "hangman.h"
-//#include "highscore.h"
+#include "highscore.h"
 
 
 void printPretty(int choice) {

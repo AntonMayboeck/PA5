@@ -27,6 +27,24 @@ private:
 public:
 
 	toetactic() { mmenu(); }//default constructor that calls the main menu function
+	void calculateScore() {
+		if (p1 == "COMP") {
+			if (totalmovecounter == 5) {
+				p2 = 1000 + (totalmovecounter * 105);
+			}
+			else {
+				p2 = 1000 - ((9 - totalmovecounter) * 100) + (totalmovecounter * 105);
+			}
+		}
+		else if (p2 == "COMP") {
+			if (totalmovecounter == 5) {
+				p1 = 1000 + (totalmovecounter * 105);
+			}
+			else {
+				p1 = 1000 - ((9 - totalmovecounter) * 100) + (totalmovecounter * 105);
+			}
+		}
+	}
 
 	void displayboard() //board display function
 	{
@@ -103,9 +121,6 @@ public:
 			{
 				cout << p1 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				if (typeid(boxchoice) != typeid(int)) {
-					cout << "Please insert only integers" << endl;
-				}
 				setboardwithchoice(1);
 				totalmovecounter++;
 			}
@@ -113,9 +128,6 @@ public:
 			{
 				cout << p2 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				if (typeid(boxchoice) != typeid(int)) {
-					cout << "Please insert only integers" << endl;
-				}
 				setboardwithchoice(1);
 				totalmovecounter++;
 			}
@@ -132,36 +144,42 @@ public:
 			displayboard(); 
 			istherewinner = true;
 			++p1score; 
+			calculateScore();
 			displayscore(); 
 			hmenu(); }
 		else if (((array[0] == 'O') && (array[1] == 'O') && (array[2] == 'O')) || ((array[3] == 'O') && (array[4] == 'O') && (array[5] == 'O')) || ((array[6] == 'O') && (array[7] == 'O') && (array[8] == 'O'))) { 
 			displayboard(); 
 			istherewinner = true; 
 			++p2score; 
+			calculateScore();
 			displayscore();
 			hmenu(); }
 		else if (((array[0] == 'X') && (array[3] == 'X') && (array[6] == 'X')) || ((array[1] == 'X') && (array[4] == 'X') && (array[7] == 'X')) || ((array[2] == 'X') && (array[5] == 'X') && (array[8] == 'X'))) { 
 			displayboard(); 
 			istherewinner = true; 
 			++p1score; 
+			calculateScore();
 			displayscore(); 
 			hmenu(); }
 		else if (((array[0] == 'O') && (array[3] == 'O') && (array[6] == 'O')) || ((array[1] == 'O') && (array[4] == 'O') && (array[7] == 'O')) || ((array[2] == 'O') && (array[5] == 'O') && (array[8] == 'O'))) { 
 			displayboard(); 
 			istherewinner = true;  
 			++p2score; 
+			calculateScore();
 			displayscore(); 
 			hmenu(); }
 		else if (((array[0] == 'X') && (array[4] == 'X') && (array[8] == 'X')) || ((array[2] == 'X') && (array[4] == 'X') && (array[6] == 'X'))) { 
 			displayboard(); 
 			istherewinner = true; 
 			++p1score; 
+			calculateScore();
 			displayscore(); 
 			hmenu(); }
 		else if (((array[0] == 'O') && (array[4] == 'O') && (array[8] == 'O')) || ((array[2] == 'O') && (array[4] == 'O') && (array[6] == 'O'))) {
 			displayboard(); 
 			istherewinner = true; 
 			++p2score; 
+			calculateScore();
 			displayscore();
 			hmenu(); }
 
@@ -186,9 +204,6 @@ public:
 				displayboard();
 				cout << p2 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				if (typeid(boxchoice) != typeid(int)) {
-					cout << "Please insert only integers" << endl;
-				}
 				setboardwithchoice(1);
 				totalmovecounter++;
 				hcheckforwin();
@@ -199,9 +214,6 @@ public:
 				displayboard();
 				cout << p1 << " which numbered box do you choose?";
 				cin >> boxchoice;
-				if (typeid(boxchoice) != typeid(int)) {
-					cout << "Please insert only integers" << endl;
-				}
 				setboardwithchoice(1);
 				totalmovecounter++;
 				hcheckforwin();
@@ -217,6 +229,7 @@ public:
 
 	void compstrategy()
 	{
+
 		if (p1 == "COMP" && compmove == 0) { 
 			setboardwithchoice(5); 
 			compmove++; }
@@ -391,9 +404,7 @@ public:
 	void mmenu()
 	{
 		system("cls");
-		cout << "		 Welcome to Maxthecoder's Console\n			  T!C-t@c-TOe\n\n";
 		cout << "			  Main Menu\n";
-		cout << "			  ~~~~~~~~~\n";
 		cout << "			1. vs COMPUTER\n";
 		cout << "			2. 2 Human Players\n";
 		cout << "			4. Quit\n\n";
@@ -404,11 +415,13 @@ public:
 		case 1:cout << "CHOOSE:\n1.Player1\n2.Player2\n";
 			cin >> menuchoice;
 			if (menuchoice == 1) {
-				p2 = "COMP"; cout << "What is your nickname Player 1?\n"; 
+				p2 = "COMP"; 
+				cout << "What is your nickname Player 1?\n"; 
 				cin >> p1;
 			}
 			else { 
-				p1 = "COMP"; cout << "What is your nickname Player 2?\n"; 
+				p1 = "COMP"; \
+				cout << "What is your nickname Player 2?\n"; 
 				cin >> p2; 
 			}
 			crun();

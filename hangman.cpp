@@ -22,24 +22,23 @@ void Hangman::MakeDisplay() {
         display = display + "_ ";
 }
 
-// void Hangman::MakeDisplay() {
-//     string randomWord = master_list[random];
+//void Hangman::MakeDisplay() {
+//    string randomWord = master_list[random];
+//
+//    for (int i = 0; i < randomWord.length(); i++) {
+//        char display[i] = {"_"};
+//        cout << display[i] << " " << endl;
+//    }
+//}
 
-//     for (int i = 0; i < randomWord.length(); i++) {
-//         char display[i] = {"_"};
-//         cout << display[i] << " " << endl;
-//     }
-// }
-
-void Hangman::GetLetter(char guess) {
+void Hangman::GetLetter() {
     int len = strlen(random_word);
     guess;
-    // for (int i = 0; i < len; i++)
-    // {
-    //     if (guess == random_word[i]) {
+    for (int i = 0; i < len; i++){
+        if (guess == random_word[i]) {
             
-    //     }
-    // }
+        }
+    }
 }
 
 int Hangman::Play() {
@@ -72,7 +71,8 @@ int Hangman::Play() {
 
     cout << "Let's play a game of hangman!!!!!" << endl;
     cout << display << endl;
-    cout << "\n\nGuess a letter: "; cin >> guess;
+    cout << "\n\nGuess a letter: "; 
+    cin >> guess;
 }
 
 int main(){
