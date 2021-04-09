@@ -15,7 +15,6 @@ public:
     int overall_hint_counter;
     int hint_counter;
     int hintsleft;
-    auto duration;
     // methods
     int Play();
     void create_dash(int);
@@ -29,6 +28,6 @@ public:
     void set_random_word();
     void set_checker();
     void set_iteration_counter(int);
-    void calculateScore(auto);
+    void calculateScore();
 
 };

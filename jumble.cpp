@@ -142,7 +142,6 @@ void WordJumble::hint() {
     // add a random number
     if (hintsleft == 0) {
         cout << "No hints left!" << endl;
-        break;
     }
     if (hint_counter < 0) {
         int random_num = (rand() % lenOfRandom);
@@ -163,7 +162,7 @@ void WordJumble::calculateScore() {
         points = (iteration_counter * hintsleft) + 1000;
     }
     else {
-        points = (iteration_counter * hintsleft) + (1000 * (5 - hintsleft);
+        points = (iteration_counter * hintsleft) + (1000 * (5 - hintsleft));
     }
     
 
@@ -192,7 +191,6 @@ int WordJumble::Play() {
         //cout << "Hello 5" << endl;
         if (iter_count == 7) {
             scrambleWord.calculateScore();
-            cout << "This took you " << duration << " seconds" << endl;
             cout << "You finished with " << scrambleWord.points << " points left!" << endl;
             break;
 
@@ -208,8 +206,8 @@ int WordJumble::Play() {
 }
 
 
-int main() {
+/*int main() {
     WordJumble jump;
 
     jump.Play();
-}
+}*/

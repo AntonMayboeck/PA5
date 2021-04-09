@@ -1,29 +1,30 @@
 #include <iostream>
-#include "snake.h"
-#include "tictactoe.h"
-//#include "hangman.h"
+//#include "snake.h"
+#include "tictactoe2.h"
+#include "hangman.h"
 #include "game.h"
 
-Game::Game(TicTacToe *tictactoe, Snake *snake){
-    //this->hangman = hangman;
+Game::Game(toetactic *tictactoe, Snake *snake, WordJumble *hangman){
+    this->hangman = hangman;
     this->tictactoe = tictactoe;
     this->snake = snake;
+
 }
 
 Game::Game(){}
 
-void Game::Header() {
+/*void Game::Header() {
     cout << "\n\n\n\n\n\n\n\n";
     cout << " @@@@@@@   @@@@@@  @@@@@@@@@@  @@@@@@@@  @@@@@@ @@@@@@@  @@@@@@  @@@@@@@ " << endl;
     cout << " !@@       @@!  @@@ @@! @@! @@! @@!      !@@       @@!   @@!  @@@ @@!  @@@ " << endl;
     cout << " !@! @!@!@ @!@!@!@! @!! !!@ @!@ @!!!:!    !@@!!    @!!   @!@  !@! @!@@!@! " << endl;
     cout << " :!!   !!: !!:  !!! !!:     !!: !!:          !:!   !!:   !!:  !!! !!:     " << endl;
     cout << "  :: :: :   :   : :  :      :   : :: ::: ::.: :     :     : :. :   :    " << endl;
-}
+}*/
 
 void Game::firstScreen(){
     char choice;
-    Header();
+    //Header();
     cout << "\n" << "                          Ready? (y/n)                                    " << endl;
     cout << "\n\n\n";
 
@@ -49,16 +50,16 @@ void Game::mainScreen(){
     cin >> choice;
 
     if (choice == 1) {
-        TicTacToe t;
-        t.Play();
+        toetactic t;
     } 
     else if (choice == 2) {
-        cout << "hang";
+        WordJumble hangman;
+        hangman.Play();
     }
-    else if (choice == 3) {
-        Snake s;
-        s.Play();
-    }
+    //else if (choice == 3) {
+    //    Snake s;
+    //    s.Play();
+    //}
 
     return;
 }
