@@ -3,17 +3,16 @@
 #include <iostream>
 #include <chrono>
 #include <set>
+#include <cstdlib>
+#include <ncurses.h>
 #include "snake.h"
 
 
 using namespace std;
 
-Snake::Snake(){
-
-}
 
 Snake::Snake(){}
-Snake::SetUp(){
+void Snake::SetUp(){
     initscr();
     clear();
     noecho();
@@ -27,7 +26,7 @@ Snake::SetUp(){
     FruitY = (rand() % height)+1;
     score = 0;
 }
-Snake::Input(){
+void Snake::Input(){
     keypad(stdscr, true);
   halfdelay(1);
   int c = getch();
@@ -50,7 +49,7 @@ Snake::Input(){
       break;
   }
 }
-Snake::Logic(){
+void Snake::Logic(){
       int prevX = TailX[0];
   int prevY = TailY[0];
   int prev2X, prev2Y;
@@ -103,7 +102,7 @@ Snake::Logic(){
     }
 }
 
-Snake::Draw(){
+void Snake::Draw(){
     clear();
     for(int i = 0; i < width+2; i++)
         mvprintw(0,i,"+");
@@ -136,7 +135,7 @@ Snake::Draw(){
     refresh();
 }
 
-Snake::Play(){
+int Snake::Play(){
     Setup();
     Draw();
     

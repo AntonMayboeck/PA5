@@ -2,13 +2,15 @@
 
 using namespace std;
 
+#pragma once
+
 class Snake {
 public:
-    Snake();
     Snake();
 	void Setup();
     void Input();
 	void Logic();
+    void Draw();
     int Play();
 
     bool gameOver;
@@ -19,7 +21,7 @@ public:
     int FruitX;
     int FruitY;
     int score;
-    enum eDirection; // {STOP, RIGHT, LEFT, DOWN}
+    //enum eDirection; // {STOP, RIGHT, LEFT, DOWN}
     int TailX[100];
     int TailY[100];
     int nTail;

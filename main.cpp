@@ -2,6 +2,8 @@
 
 #include "tictactoe.h"
 #include "snake.h"
+#include "hangman.h"
+//#include "highscore.h"
 
 
 void printPretty(int choice) {
@@ -11,27 +13,30 @@ void printPretty(int choice) {
 	cout << "Snake(3)" << endl;
 	cout << "Please select one of the following games: ";
 
-	cin >> choice
+	cin >> choice;
 
 }
 
 int main() {
 	TicTacToe TicTac;
 	Snake Snake;
+	Hangman Hang;
 
-	int choice;
+	char choice;
 
 	while (true) {
-		if (choice == 1) {
+		printPretty(choice);
+		if (choice == '1') {
+			Hang.Play();
 			//Play Hangman
 		}
-		if (choice == 2) {
-			TicTac.Play()
+		if (choice == '2') {
+			TicTac.Play();
 		}
-		if (choice == 3) {
-			Snake.Play()
+		if (choice == '3') {
+			Snake.Play();
 		}
 	}
 
-
+	return 0;
 }
