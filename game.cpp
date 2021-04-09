@@ -1,5 +1,5 @@
 #include <iostream>
-//#include "snake.h"
+#include "snake.h"
 #include "tictactoe2.h"
 #include "hangman.h"
 #include "game.h"
@@ -55,10 +55,10 @@ void Game::mainScreen(){
         WordJumble hangman;
         hangman.Play();
     }
-    //else if (choice == 3) {
-    //    Snake s;
-    //    s.Play();
-    //}
+    else if (choice == 3) {
+        Snake snake;
+        snake.Play();
+    }
 
     return;
 }
