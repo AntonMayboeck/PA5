@@ -6,12 +6,23 @@ using namespace std;
 
 class Snake {
 public:
+enum eDirection
+   {
+      STOP=0,
+      LEFT,
+      RIGHT,
+      UP,
+      DOWN
+   };
+
+    Snake(int width, int height, bool gameOver, int FruitX, int FruitY, int x, int y, int score, eDirection dir, int nTail, int TailX[], int TailY[]);
     Snake();
 	void Setup();
     void Input();
 	void Logic();
     void Draw();
     int Play();
+    int Endscreen();
 
     bool gameOver;
     int width;
@@ -21,8 +32,8 @@ public:
     int FruitX;
     int FruitY;
     int score;
-    //enum eDirection; // {STOP, RIGHT, LEFT, DOWN}
     int TailX[100];
     int TailY[100];
     int nTail;
+    eDirection dir;
 };

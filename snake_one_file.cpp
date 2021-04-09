@@ -91,6 +91,17 @@ void Input()
   }
 }
 
+int endscreen() {
+  char choice;
+ clear();
+    cout << "do you want to continue?";
+    cin >> choice;
+    if (choice == 'y') {
+      return 0;
+    }
+        refresh();
+
+}
 
 void Logic() {
   int prevX = TailX[0];
@@ -154,9 +165,8 @@ int main() {
     Draw();
     Input();
     Logic();
-  }
+  } 
   endscreen();
-
   getch();
   endwin();
   return 0;
