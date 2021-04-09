@@ -1,19 +1,19 @@
 #include <string>
-#include "tictactoe.h"
+#include "tictactoe2.h"
 #include "snake.h"
+#include "jumble.h"
 //#include "hangman.h"
 using namespace std;
 
 class Game {
     public:
-        Game(int score, Snake *snake);
+        Game(toetactic *tictactoe, Snake *snake, WordJumble* hangman);
         Game();
         void mainScreen();
-        void Header();
+        //void Header();
         void firstScreen();
 
         Snake *snake;
-        int score;
-
-        //Hangman hangman;
+        WordJumble* hangman;
+        toetactic *tictactoe;
 };
