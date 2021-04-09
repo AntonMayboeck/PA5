@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "tictactoe.h"
+#include "snake.h"
 
 
 void printPretty(int choice) {
@@ -16,6 +17,7 @@ void printPretty(int choice) {
 
 int main() {
 	TicTacToe TicTac;
+	Snake Snake;
 
 	int choice;
 
@@ -25,6 +27,9 @@ int main() {
 		}
 		if (choice == 2) {
 			TicTac.Play()
+		}
+		if (choice == 3) {
+			Snake.Play()
 		}
 	}
 
