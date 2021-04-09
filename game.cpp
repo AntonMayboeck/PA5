@@ -10,7 +10,6 @@ Game::Game(toetactic *tictactoe, Snake *snake, WordJumble *hangman){
     this->snake = snake;
 
 }
-
 Game::Game(){}
 
 /*void Game::Header() {
