@@ -4,15 +4,27 @@
 #include <chrono>
 #include <set>
 #include "snake.h"
+#include <iostream> 
+#include <cstdlib>
+#include <ncurses.h>
 
 
 using namespace std;
 
-Snake::Snake(){
-
+Snake::Snake(int width, int height, bool gameOver, int FruitX, int FruitY, int x, int y, int score, eDirection dir){
+  this->width = width;
+  this->height = height;
+  this->gameOver = gameOver;
+  this->x = x;
+  this->y = y;
+  this->FruitX = FruitX;
+  this->FruitY = FruitY;
+  this->score = score;
+  this->dir = dir;
 }
 
 Snake::Snake(){}
+
 Snake::SetUp(){
     initscr();
     clear();
@@ -20,6 +32,8 @@ Snake::SetUp(){
     cbreak();
     curs_set(0);
     gameOver = false;
+    enum eDirection {STOP = 0, LEFT, RIGHT, UP, DOWN};
+    eDirection dir;
     dir = STOP;
     x = width / 2;
     y = height / 2;
@@ -28,7 +42,7 @@ Snake::SetUp(){
     score = 0;
 }
 Snake::Input(){
-    keypad(stdscr, true);
+  keypad(stdscr, true);
   halfdelay(1);
   int c = getch();
   switch(c)
@@ -51,7 +65,7 @@ Snake::Input(){
   }
 }
 Snake::Logic(){
-      int prevX = TailX[0];
+  int prevX = TailX[0];
   int prevY = TailY[0];
   int prev2X, prev2Y;
   TailX[0] = x;
