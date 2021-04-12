@@ -7,13 +7,13 @@ using namespace std;
 
 class Game {
     public:
-        Game(TicTacToe* tictactoe, WordJumble* hangman, Snake* snake);
+        Game(TicTacToe* tictactoe, Snake* snake, WordJumble* hangman);
         Game();
         void mainScreen();
         //void Header();
         void firstScreen();
 
-        //Snake *snake;
+        Snake *snake;
         WordJumble* hangman;
         TicTacToe *tictactoe;
 };

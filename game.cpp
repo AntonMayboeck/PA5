@@ -4,7 +4,7 @@
 #include "hangman.h"
 #include "game.h"
 
-Game::Game(TicTacToe *tictactoe, WordJumble *hangman, Snake* snake){
+Game::Game(TicTacToe *tictactoe, Snake* snake, WordJumble *hangman){
     this->snake = snake;
     this->hangman = hangman;
     this->tictactoe = tictactoe;

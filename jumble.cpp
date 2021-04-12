@@ -73,19 +73,19 @@ void WordJumble::guess_word() {
         if (notimes == 0) {
             tries--;
         }
-        if (tries == 0) {
+        if (tries <= 0) {
             cout << "You have exhausted all your tries, please try again with a different word" << endl;
             break;
         }
         cout << "you have " << tries <<  " tries left" << endl;
-        if (tries == 0) {
-            cout << "You have failed to guess the word" << endl;
+        if (tries <= 0) {
+            cout << "\nYou have failed to guess the word" << endl;
             return;
         }
         if (cmp()) {
             delete[] pnr;
             delete[] random_word;
-            cout << "Well Done, you have solved the crisis!!!!" << endl;
+            cout << "\nWell Done, you have solved the crisis!!!!" << endl;
             quit = true;
         }
         else {
