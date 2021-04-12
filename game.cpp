@@ -12,15 +12,6 @@ Game::Game(toetactic *tictactoe, Snake *snake, WordJumble *hangman){
 }
 Game::Game(){}
 
-/*void Game::Header() {
-    cout << "\n\n\n\n\n\n\n\n";
-    cout << " @@@@@@@   @@@@@@  @@@@@@@@@@  @@@@@@@@  @@@@@@ @@@@@@@  @@@@@@  @@@@@@@ " << endl;
-    cout << " !@@       @@!  @@@ @@! @@! @@! @@!      !@@       @@!   @@!  @@@ @@!  @@@ " << endl;
-    cout << " !@! @!@!@ @!@!@!@! @!! !!@ @!@ @!!!:!    !@@!!    @!!   @!@  !@! @!@@!@! " << endl;
-    cout << " :!!   !!: !!:  !!! !!:     !!: !!:          !:!   !!:   !!:  !!! !!:     " << endl;
-    cout << "  :: :: :   :   : :  :      :   : :: ::: ::.: :     :     : :. :   :    " << endl;
-}*/
-
 void Game::firstScreen(){
     char choice;
     //Header();
@@ -50,17 +41,17 @@ void Game::mainScreen(){
 
     if (choice == 1) {
         toetactic t;
+        t.Play();
     } 
     else if (choice == 2) {
         WordJumble hangman;
         hangman.Play();
     }
-    //else if (choice == 3) {
-    //    Snake s;
-    //    s.Play();
-    //}
+    else if (choice == 3) {
+        Snake s;
+        s.Play();
+    }
 
-    return;
 }
 
 int main() {
