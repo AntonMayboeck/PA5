@@ -73,6 +73,10 @@ void WordJumble::guess_word() {
         if (notimes == 0) {
             tries--;
         }
+        if (tries == 0) {
+            cout << "You have exhausted all your tries, please try again with a different word" << endl;
+            break;
+        }
         cout << "you have " << tries <<  " tries left" << endl;
         if (tries == 0) {
             cout << "You have failed to guess the word" << endl;
@@ -182,9 +186,9 @@ void WordJumble::hint() {
         }
         hint_array[random_num] = random_word[random_num];
     }
-    for (int i = 0; i < lenOfRandom; i++) {
-        cout << hint_array[i] << " ";
-    }
+    //for (int i = 0; i < lenOfRandom; i++) {
+    //    cout << hint_array[i] << " ";
+    //}
 }
 
 void WordJumble::calculateScore() {

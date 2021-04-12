@@ -499,11 +499,11 @@ void TicTacToe::hresetboard()
 	compmove = 0;
 }
 
-
+/*
 int main()
 {
 	srand(time(NULL));
 	TicTacToe a;
 	a.Play();
 	system("PAUSE");
-}
+}*/

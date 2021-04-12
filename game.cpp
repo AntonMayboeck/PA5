@@ -4,10 +4,10 @@
 #include "hangman.h"
 #include "game.h"
 
-Game::Game(toetactic *tictactoe, Snake *snake, WordJumble *hangman){
+Game::Game(TicTacToe *tictactoe, WordJumble *hangman, Snake* snake){
+    this->snake = snake;
     this->hangman = hangman;
     this->tictactoe = tictactoe;
-    this->snake = snake;
 
 }
 Game::Game(){}
@@ -40,7 +40,7 @@ void Game::mainScreen(){
     cin >> choice;
 
     if (choice == 1) {
-        toetactic t;
+        TicTacToe t;
         t.Play();
     } 
     else if (choice == 2) {
@@ -48,13 +48,8 @@ void Game::mainScreen(){
         hangman.Play();
     }
     else if (choice == 3) {
-<<<<<<< HEAD
-        Snake s;
-        s.Play();
-=======
         Snake snake;
         snake.Play();
->>>>>>> 040e4f0507dd60e9dd405b2a04954e5c03aa8b9a
     }
 
 }
