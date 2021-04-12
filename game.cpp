@@ -1,5 +1,5 @@
 #include <iostream>
-//#include "snake.h"
+#include "snake.h"
 #include "tictactoe2.h"
 #include "hangman.h"
 #include "game.h"
@@ -48,8 +48,13 @@ void Game::mainScreen(){
         hangman.Play();
     }
     else if (choice == 3) {
+<<<<<<< HEAD
         Snake s;
         s.Play();
+=======
+        Snake snake;
+        snake.Play();
+>>>>>>> 040e4f0507dd60e9dd405b2a04954e5c03aa8b9a
     }
 
 }
